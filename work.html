@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work — Pavitra</title>
+<meta name="description" content="Thirteen projects, from RAVEN and CampusZone to FreeMyMac, spectre and Nearfield.">
+<meta property="og:title" content="Work — Pavitra">
+<meta property="og:description" content="RAVEN: 250k+ users across 400+ Discord servers. Plus a Mac app, an air-quality map and a study planner.">
+<meta name="theme-color" content="#0a0f1e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0f1e'/%3E%3Ccircle cx='15' cy='16' r='8' fill='%23f4ecd8'/%3E%3Ccircle cx='19' cy='13' r='7' fill='%230a0f1e'/%3E%3Ccircle cx='23' cy='22' r='2.4' fill='%23ffb547'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=2">
+<script src="assets/data.js?v=2" defer></script>
+<script src="assets/site.js?v=2" defer></script>
+<script src="assets/work.js?v=2" defer></script>
+</head>
+<body data-depth="180">
+<a class="sr" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">pavitra<b>.</b></a>
+    <ul>
+      <li><a href="work.html" aria-current="page">Work</a></li>
+      <li><a href="lab.html">Lab</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+    </ul>
+    <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch light or dark (t)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+    </button>
+    <a class="say-hi" href="index.html#hi">Say hi</a>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+
+  <section class="page-head">
+    <div class="eyebrow">Work</div>
+    <h1>Problems in. <em>Fixes out.</em></h1>
+    <p>Thirteen projects. Most started the same way: something in my own life broke, and I wrote the thing that fixed it.</p>
+  </section>
+
+  <article class="card featured">
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+        <defs><radialGradient id="g" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffb547" stop-opacity=".9"/><stop offset="1" stop-color="#ffb547" stop-opacity="0"/></radialGradient></defs>
+        <g id="net"></g>
+        <circle cx="200" cy="150" r="46" fill="url(#g)" opacity=".35"/>
+        <circle cx="200" cy="150" r="14" fill="#ffb547"/>
+        <text x="200" y="196" text-anchor="middle" fill="#f4ecd8" font-family="Geist Mono, monospace" font-size="11" letter-spacing="2">RAVEN</text>
+      </svg>
+    </div>
+    <div class="txt">
+      <span class="badge">Featured</span>
+      <h3>RAVEN</h3>
+      <p class="problem-line">"Every Discord bot I tried did half of what my server needed."</p>
+      <p style="margin:0">So I built one that does all of it: music through Lavalink, moderation, automod, antinuke, tickets, welcome and roles, leveling, logs and a starboard, with a web dashboard to run it.</p>
+      <div class="nums"><div>250k+<span>users</span></div><div>400+<span>servers</span></div></div>
+      <ul class="chips"><li>Python</li><li>py-cord</li><li>Lavalink</li><li>SvelteKit</li><li>Postgres</li><li>Redis</li></ul>
+      <span class="note" style="font-size:14px">Source is private.</span>
+    </div>
+  </article>
+
+  <div class="block-head" style="margin-top:36px">
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="ai" aria-pressed="false">AI</button>
+      <button type="button" data-f="app" aria-pressed="false">Apps</button>
+      <button type="button" data-f="web" aria-pressed="false">Web</button>
+      <button type="button" data-f="bot" aria-pressed="false">Bots</button>
+      <button type="button" data-f="extension" aria-pressed="false">Extensions</button>
+    </div>
+    <button class="open-all" type="button" data-open-all="#all-work">Show all fixes</button>
+  </div>
+  <div class="ledger" id="all-work" data-ledger data-skip="raven" style="margin-bottom:64px"></div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>This site goes dark when Delhi does.</span>
+    <span class="keys"><span><span class="kbd">t</span> theme</span></span>
+  </div>
+</footer>
+</body>
+</html>

@@ -160,6 +160,52 @@ h1, h2, h3 { color: var(--ink); font-weight: 500; margin: 0; letter-spacing: -.0
 .tl li.next h3 { color: var(--accent); }
 body[data-short="1"] .tl li.minor { display: none; }
 
+/* ---------- writing list ---------- */
+a.feat { display: block; color: inherit; }
+a.feat:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
+.feat .art img { width: 100%; height: 100%; object-fit: cover; }
+.wlist { list-style: none; margin: 0 0 72px; padding: 0; }
+.wyear { font-size: 15px; font-weight: 500; color: var(--ink); padding: 28px 0 8px; }
+.wrow { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 20px; padding: 10px 0; align-items: baseline; }
+.wdate, .wmin { font-size: 13px; white-space: nowrap; }
+.wtitle { display: block; font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.45; }
+.wtitle:hover { text-decoration: underline; text-underline-offset: 3px; }
+.wsum { display: block; font-size: 15px; line-height: 1.6; margin-top: 2px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.empty { padding: 24px 0 72px; }
+
+/* ---------- post ---------- */
+.post { max-width: 680px; margin: 0 auto; padding: 56px 0 24px; }
+.post-head .meta { font-size: 13px; }
+.post-head h1 { font-size: clamp(30px, 4.4vw, 40px); line-height: 1.15; margin: 10px 0 14px; letter-spacing: -.02em; }
+.post-sum { margin: 0 0 16px; font-size: 18px; line-height: 1.6; }
+.byline { font-size: 13px; padding-bottom: 32px; margin-bottom: 36px; border-bottom: 1px solid var(--line); }
+.byline a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.draft { color: var(--accent); font-weight: 500; }
+.prose { color: var(--ink); opacity: .92; }
+.prose > * { margin: 0 0 1.15em; }
+.prose h2 { font-size: 24px; line-height: 1.3; margin: 1.9em 0 .6em; opacity: 1; }
+.prose h3 { font-size: 19px; line-height: 1.35; margin: 1.6em 0 .5em; }
+.prose a { text-decoration: underline; text-decoration-color: var(--text); text-underline-offset: 3px; }
+.prose a:hover { text-decoration-color: var(--ink); }
+.prose strong { font-weight: 600; }
+.prose ul, .prose ol { padding-left: 1.3em; }
+.prose li { margin: .3em 0; }
+.prose blockquote { margin-left: 0; padding-left: 18px; border-left: 2px solid var(--line); color: var(--text); }
+.prose img { border-radius: 6px; margin: 1.6em auto; }
+.prose hr { border: 0; border-top: 1px solid var(--line); margin: 2.4em 0; }
+.prose code { font: 14px/1.5 var(--mono); background: var(--soft); padding: 2px 5px; border-radius: 4px; }
+.prose pre { background: var(--soft); border-radius: 8px; padding: 16px 18px; overflow-x: auto; }
+.prose pre code { background: none; padding: 0; font-size: 13.5px; line-height: 1.6; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 15px; display: block; overflow-x: auto; }
+.prose th, .prose td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.post-foot { padding: 32px 0 64px; font-size: 14px; }
+.toc-btn { position: fixed; left: 20px; bottom: 20px; z-index: 30; font: 500 13px/1 var(--sans); color: var(--bg); background: var(--ink); border: 0; border-radius: 999px; padding: 10px 14px; cursor: pointer; }
+.toc { position: fixed; left: 20px; bottom: 64px; z-index: 30; width: min(300px, calc(100vw - 40px)); max-height: 60vh; overflow: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px; display: none; box-shadow: 0 12px 32px -12px rgba(0,0,0,.25); }
+.toc.on { display: block; }
+.toc a { display: block; font-size: 14px; line-height: 1.4; padding: 7px 8px; border-radius: 6px; color: var(--ink); }
+.toc a.sub { padding-left: 20px; color: var(--text); }
+.toc a:hover { background: var(--soft); }
+
 footer { padding: 28px 0 40px; font-size: 13px; }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 footer a:hover { color: var(--ink); }
@@ -184,6 +230,10 @@ footer a:hover { color: var(--ink); }
   .thumb span { font-size: 8px; }
   .prow .aside { grid-column: 2; margin-top: -4px; }
   .tl li { grid-template-columns: 1fr; gap: 0; }
+  .wrow { grid-template-columns: 1fr; gap: 0; }
+  .wdate { order: -1; }
+  .wmin { display: none; }
+  .nav .cta-li { display: none; }
   .rank { grid-template-columns: 76px 1fr 40px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }

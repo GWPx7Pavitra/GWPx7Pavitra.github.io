@@ -173,6 +173,6 @@ window.SITE = {
     { src: 'boards-2027', text: "boards-2027 uses React, Vite and Tailwind on the web, an Express server, and an Android app made with Capacitor. It's live at study.plagmo.art." },
     { lead: true, src: 'squarebotcogs', text: 'squarebotcogs is a set of Python discord.py cogs for automod, mass moderation, mod logs, tickets and music.' },
     { src: 'Stack', text: "I write TypeScript, JavaScript, Python, Swift, Kotlin and a little Java. I've used React, Next.js, SvelteKit, Express, Fastify, Electron, Cloudflare Workers, Postgres, Redis and Docker." },
-    { src: 'Contact', text: 'The fastest way to reach me is Discord, where I am x465. Email works too: pavisj@icloud.com. On Instagram I am @xpavilyon.' }
+    { src: 'Contact', text: 'The fastest way to reach me is Discord, where I am x465. Email works too: pavisj@icloud.com. I am xpavilyon on LinkedIn and @xpavilyon on Instagram.' }
   ]
 };

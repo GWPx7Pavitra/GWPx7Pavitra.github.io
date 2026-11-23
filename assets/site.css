@@ -260,6 +260,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; background: var(--ink); color: var(--bg); padding: 10px 14px; border-radius: 10px; font-size: 14px; transition: .25s; pointer-events: none; z-index: 50; }
 .toast.on { opacity: 1; transform: translate(-50%, 0); }
 
+/* ---------- minimal home ---------- */
+.home .hero { align-items: center; min-height: calc(100vh - 64px - 120px); padding: 48px 0 56px; }
+.home h1 { font-size: clamp(72px, 11vw, 132px); line-height: .9; margin: 12px 0 10px; letter-spacing: -.03em; }
+.home .dot-accent { color: var(--accent); }
+.tagline { font: 400 clamp(28px, 3.6vw, 40px)/1.15 var(--serif); color: var(--ink); margin: 0 0 26px; letter-spacing: -.01em; }
+.tagline em { color: var(--accent); }
+.home .lede { font-size: 18px; color: var(--muted); margin: 0 0 6px; }
+.home .lede strong { color: var(--ink-2); font-weight: 500; }
+.home .links { margin-top: 30px; align-items: center; }
+.links .go { color: var(--bg); background: var(--ink); text-decoration: none; padding: 10px 16px; border-radius: 999px; font-weight: 500; }
+.links .go:hover { color: var(--accent-ink); background: var(--accent); }
+
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 28px; padding-top: 28px; }

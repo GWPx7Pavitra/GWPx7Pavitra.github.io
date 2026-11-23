@@ -1,9 +1,9 @@
 // Work page: filter chips, and a small network drawing for the RAVEN card.
 document.addEventListener('DOMContentLoaded', () => {
-  const chips = document.querySelectorAll('.filters button');
+  const chips = document.querySelectorAll('[data-f]');
   chips.forEach((b) => b.addEventListener('click', () => {
     chips.forEach((c) => c.setAttribute('aria-pressed', String(c === b)));
-    document.querySelectorAll('#all-work .lcard').forEach((card) => {
+    document.querySelectorAll('#all-work .prow').forEach((card) => {
       card.style.display = b.dataset.f === 'all' || card.dataset.kind === b.dataset.f ? '' : 'none';
     });
   }));

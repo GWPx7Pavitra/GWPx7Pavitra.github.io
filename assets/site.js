@@ -27,7 +27,7 @@
   // ---------- theme: follows night in Delhi until you choose ----------
   const root = document.documentElement;
   const saved = store.get('theme');
-  root.dataset.theme = saved || (isNight(delhiNow()) ? 'dark' : 'light');
+  root.dataset.theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   function toggleTheme() {
     const t = root.dataset.theme === 'dark' ? 'light' : 'dark';
     store.set('theme', t); root.dataset.theme = t; drawSky();
@@ -76,6 +76,29 @@
   // ---------- project ledger ----------
   const chev = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg>';
   const kindLabel = { bot: 'Discord bot', app: 'App', web: 'Web', extension: 'Extension', ai: 'AI' };
+  const glow = { bot: '#8b9cff', app: '#f0a646', web: '#5fc2a8', extension: '#e07a9a', ai: '#b48cff' };
+  const metaOf = (p) => p.stack.slice(0, 3).map((s) => s.toLowerCase()).join(' · ');
+  const linksOf = (p) => p.links.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)}</a>`).join('') || `<span>${esc(p.note || 'Private')}</span>`;
+  function rowHTML(p) {
+    const main = p.links[0]?.[1];
+    const title = main ? `<a class="title" href="${esc(main)}" target="_blank" rel="noopener">${esc(p.name)}</a>` : `<span class="title">${esc(p.name)}</span>`;
+    return `<li class="prow" data-kind="${p.kind}">
+      <span class="thumb" style="--glow:${glow[p.kind]}" aria-hidden="true"><span>${esc(p.name)}</span></span>
+      <span><span class="meta">${esc(metaOf(p))}</span>${title}<span class="desc" title="${esc(p.fix)}">${esc(p.fix)}</span></span>
+      <span class="aside">${linksOf(p)}</span>
+    </li>`;
+  }
+  function featHTML(p) {
+    const r = mulberry(p.name.length * 31); let dots = '';
+    for (let i = 0; i < 26; i++) dots += `<circle cx="${(r() * 320).toFixed(1)}" cy="${(r() * 180).toFixed(1)}" r="${(r() * 1.4 + .4).toFixed(2)}" fill="#dcdfe5" opacity="${(r() * .5 + .15).toFixed(2)}"/>`;
+    const g = glow[p.kind];
+    return `<article class="feat">
+      <div class="art"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="g-${p.id}" cx=".72" cy=".3" r=".6"><stop offset="0" stop-color="${g}" stop-opacity=".55"/><stop offset="1" stop-color="${g}" stop-opacity="0"/></radialGradient></defs><rect width="320" height="180" fill="url(#g-${p.id})"/>${dots}<text x="18" y="160" fill="#dcdfe5" font-family="Satoshi, sans-serif" font-size="20" font-weight="500">${esc(p.name)}</text></svg></div>
+      <div class="meta">${esc(metaOf(p))}</div>
+      <h3>${esc(p.name)}</h3>
+      <p>${esc(p.fix)}</p>
+    </article>`;
+  }
   function cardHTML(p, open) {
     const nums = p.numbers?.length ? `<div class="nums">${p.numbers.map(([n, l]) => `<div>${esc(n)}<span>${esc(l)}</span></div>`).join('')}</div>` : '';
     const links = p.links.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join('') + (p.note ? `<span class="note">${esc(p.note)}</span>` : '');
@@ -95,7 +118,11 @@
     const { limit, skip, open } = el.dataset;
     let list = window.SITE.projects.filter((p) => !(skip && p.id === skip));
     if (limit) list = list.slice(0, +limit);
-    el.innerHTML = list.map((p) => cardHTML(p, open === 'all')).join('');
+    el.innerHTML = list.map((p) => (el.tagName === 'UL' ? rowHTML(p) : cardHTML(p, open === 'all'))).join('');
+  }
+  function renderStart(el) {
+    const ids = el.dataset.start.split(',');
+    el.innerHTML = ids.map((id) => window.SITE.projects.find((p) => p.id === id)).filter(Boolean).map(featHTML).join('');
   }
   function setCard(card, on) {
     card.classList.toggle('open', on);
@@ -141,6 +168,9 @@
   // ---------- boot ----------
   document.addEventListener('DOMContentLoaded', () => {
     $$('[data-ledger]').forEach(renderLedger);
+    $$('[data-start]').forEach(renderStart);
+    $$('[data-count="projects"]').forEach((e) => (e.textContent = window.SITE.projects.length));
+    $$('[data-count="moments"]').forEach((e) => (e.textContent = window.SITE.timeline.length));
     const d = store.get('depth');
     setDepth(['5', '30', '180'].includes(d) ? d : '30');
     $$('.dial button[data-depth]').forEach((b) => b.addEventListener('click', () => setDepth(b.dataset.depth, true)));
